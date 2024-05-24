@@ -5,32 +5,46 @@
       <img src="assets/logo.png" alt="Die Lansemann Bank Logo" class="logo" />
       <h1>Geld abheben</h1>
     </header>
-    <form @submit.prevent="handleWithdrawal">
-      <div class="form-group">
-        <label for="account">Kontostand</label>
-        <input type="text" id="balance" :value="currentBalance" disabled>
-      </div>
-      <div class="form-group">
-        <label for="amount">So viel möchte ich abheben:</label>
-        <input type="number" id="amount" v-model="amount" required />
-      </div>
-      <button type="submit" class="btn-submit">Abheben</button>
-    </form>
-  </div>
-  
+      <form @submit.prevent="handleWithdrawal">
+        <div class="form-group">
+          <label for="balance">Kontostand</label>
+          <input type="text" id="balance" :value="result?.card_money" disabled>
+        </div>
+        <div class="form-group">
+          <label for="amount">So viel möchte ich abheben:</label>
+          <input type="number" id="amount" v-model="amount" required />
+        </div>
+        <button type="submit" class="btn-submit">Abheben</button>
+      </form>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { Axios } from 'axios';
 
 const accountNumber = ref('')
 const amount = ref('')
+const result = ref(null)
+const error = ref(null)
+const nuxtApp = useNuxtApp()
 
 const handleWithdrawal = () => {
   // Logic for handling withdrawal
-  alert(`Withdrawing ${amount.value} from account ${accountNumber.value}`)
+  alert(`Withdrawing ${amount.value} from the account with balance ${result.value.card_money}`)
 }
+
+onMounted(async () => {
+  try {
+    const card = '78654321'; // Replace with the actual card value you want to check
+    const response = await nuxtApp.$axios.get(`/insert_card.php?card=${card}`)
+    result.value = response
+  } catch (err) {
+    error.value = err.response ? err.response.data : err.message
+  }
+})
+
 </script>
 
 <style scoped>
