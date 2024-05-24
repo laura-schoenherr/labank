@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Grundschrift';
+    src: local('Grundschrift'), url('~public/Grundschrift.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  

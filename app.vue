@@ -34,14 +34,10 @@ const handleWithdrawal = () => {
 </script>
 
 <style scoped>
-/**  .withdrawal-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #e6e6e6; 
+
+textarea{
+  font-family: 'Grundschrift';
 }
-*/ 
 
 .withdrawal-container {
   max-width: 400px;
@@ -50,7 +46,7 @@ const handleWithdrawal = () => {
   background-color: #f5f5f5;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-family: 'Grundschrift', sans-serif; /* Anwendung der Grundschrift */
+  font-family: 'Grundschrift'; /* Anwendung der Grundschrift */
 }
 
 header {
@@ -75,6 +71,7 @@ label {
   display: block;
   margin-bottom: 5px;
   color: #003366; /* Blau aus dem Logo */
+  font-family: 'Grundschrift';
 }
 
 input {
@@ -83,6 +80,7 @@ input {
   border: 1px solid #ddd;
   border-radius: 5px;
   box-sizing: border-box;
+  font-family: 'Grundschrift';
 }
 
 .btn-submit {
@@ -94,6 +92,7 @@ input {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  font-family: 'Grundschrift';
 }
 
 .btn-submit:hover {
